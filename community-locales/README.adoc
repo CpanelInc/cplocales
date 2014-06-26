@@ -1,0 +1,16 @@
+How to Use These Locales
+=========================
+
+cPanel locales are a combination of a Perl module and a string library.
+To use the community provided locales you need to install both on your
+cPanel & WHM server.
+
+Simple Outline
+--------------
+
+1. Download the contents of community-locales to your local server
+2. Copy the perl modules to /usr/local/cpanel/Cpanel
+3. Copy the .yaml files to /var/cpanel/locale.local
+4. Run /usr/local/cpanel/bin/build_locale_databases --clean
+
+The new locales are now available for users to select.
