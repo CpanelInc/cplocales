@@ -1,12 +1,20 @@
 cPanel & WHM Locales
 ====================
 
+<<<<<<< HEAD
 These files contain the locale strings for use with cPanel & WHM.  Within the
+=======
+These files contain the locale strings for use with cPanel & WHM.  Within the 
+>>>>>>> FETCH_HEAD
 data directory, the en.yaml files contain the English strings. Additional .yaml
 files in the data directory contain translations provided by cPanel.
 
 The community-locales directory is for storing translations provided by the
+<<<<<<< HEAD
 community of cPanel & WHM users. Please issue pull requests against this
+=======
+community of cPanel & WHM users. Please issue pull requests agaisnt this
+>>>>>>> FETCH_HEAD
 directory for new locales.
 
 Providing access to our strings on github accomplishes several goals:
