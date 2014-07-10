@@ -1,20 +1,33 @@
 cPanel & WHM Locales
 ====================
 
-These files contain the locale strings for cPanel & WHM.  Within the data
-directory, the en.yaml files contain the English strings, and additional .yaml
-files are community-provided translations.
+These files contain the locale strings for use with cPanel & WHM.  Within the
+data directory, the en.yaml files contain the English strings. Additional .yaml
+files in the data directory contain translations provided by cPanel.
 
-This allows customers and community members who would like to have an early
-opportunity to translate cPanel & WHM to do so.  It also allows people who speak
-languages that we (cPanel) don't provide to have an opportunity to benefit from
-the community's efforts.  But because these are community efforts, we can't
-guarantee that they're accurate.
+The community-locales directory is for storing translations provided by the
+community of cPanel & WHM users. Please issue pull requests against this
+directory for new locales.
+
+Providing access to our strings on github accomplishes several goals:
+
+  1. Community translators can easily see which strings changed between
+  versions of cPanel & WHM.
+  2. It allows people who speak languages that we (cPanel) don't provide
+  an opportunity to benefit from the community's efforts.
+  3. Community translators have a means of both reporting bugs, and
+  providing fixes, in the translations
 
 We would be happy to accept pull requests on this repository, and will try to
 get to them as soon as possible.  If it takes us more than a week, please poke
 *https://github.com/bk2204[@bk2204]* and he'll review your changes or make sure
 someone else does.
+
+Caveat about Community Locales
+------------------------------
+
+cPanel is unable to make any guarantees about the quality of community provided
+locales. Use them at your own risk.
 
 Data Format
 -----------
@@ -34,3 +47,6 @@ corresponding to your locale.  For the other characters, use the
 
 The strings must not contain HTML or JavaScript.  They are sorted by key for
 easy diffing.
+
+For some basics on writing in the Maktext format, please read:
+http://docs.cpanel.net/twiki/bin/view/CpanelLocale/BracketNotation
