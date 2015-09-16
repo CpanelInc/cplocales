@@ -1,4 +1,4 @@
---- 
+---
 " … done.": ' …kész.'
 " … “[_1]” complete (but with errors).": ' … „[_1]” befejeződött (de hibákkal).'
 " … “[_1]” complete.": ' …„[_1]” befejeződött.'
@@ -4311,7 +4311,7 @@
 "Mongrel Instances (Ruby on Rails)": 'Mongrel-példányok (Ruby on Rails)'
 "Monitor": 'Megfigyelés'
 "Monitor visitors that are logged into your site through FTP. Terminate FTP connections to prevent file access by unwarranted users. For more information, read the [output,url,_1,documentation,target,_2,id,_3].": 'A webhelyre FTP-n keresztül bejelentkezett látogatók megfigyelése. FTP-kapcsolatok megszüntetése, a jogosulatlan felhasználók fájlhozzáférésének megakadályozása érdekében. További információért olvassa el a következő dokumentációt: [output,url,_1,documentation,target,_2,id,_3].'
-"Monitor your account[output,apos]s available space with the Disk Usage feature. All presented figures are relative to the largest directory.": 'Saját fiók elérhető lemezterületének figyelése a Lemezhasználat funkcióval. Az összes bemutatott szám a legnagyobb könyvtárhoz viszonyul.'
+"Monitor your account[output,apos]s available space with the Disk Usage feature. All presented figures are relative to the largest directory.": 'Saját fiók elérhető lemezterületének figyelése a Lemezhasználat funkcióval.'
 "Month": 'Hónap'
 "Month:": 'Hónap:'
 "Monthly": 'Havi'
