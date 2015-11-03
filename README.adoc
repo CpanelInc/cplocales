@@ -34,3 +34,11 @@ corresponding to your locale.  For the other characters, use the
 
 The strings must not contain HTML or JavaScript.  They are sorted by key for
 easy diffing.
+
+Error Messages
+--------------
+
+By its very nature, this repository contains almost all the error messages that
+cPanel & WHM produces.  If you came here because you're looking for support,
+please see https://cpanel.com/support/[our support page] for information on how
+to open a ticket and access our forums.
