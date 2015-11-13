@@ -410,7 +410,7 @@
 "Addon Domain Removal": 'Hozzáadott domain eltávolítása'
 "Addon Domain [asis,image.gif]": 'Hozzáadott domain [asis,image.gif]'
 "Addon Domain [asis,image.png]": 'Hozzáadott domain [asis,image.png]'
-"Addon Domains": 'hozzáadott domainek'
+"Addon Domains": 'Hozzáadott domainek'
 "Addon Scripts": 'Kiegészítő szkriptek'
 "Addon domains allow you to host additional domains from your account, if your hosting provider allows you to do so.": 'A hozzáadott domainek a fő domainen kívüli további domainek üzemeltetését teszi lehetővé az Ön fiókjából, ha ezt az üzemeltetési szolgáltatója engedélyezi Önnek.'
 "Addon domains will not function unless you register your domain and configure it to point to the correct [output,acronym,DNS,Domain Name System] servers.": 'A hozzáadott domainek csak akkor fognak működni, ha a regisztráltatja a domaint, és úgy konfigurálja, hogy a megfelelő [output,acronym,DNS,Domain Name System]-kiszolgálókra mutasson.'
