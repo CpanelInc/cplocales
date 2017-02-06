@@ -35,6 +35,27 @@ corresponding to your locale.  For the other characters, use the
 The strings must not contain HTML or JavaScript.  They are sorted by key for
 easy diffing.
 
+Differences between Files
+-------------------------
+
+The set of strings can vary between the files.
+
+If the English (+en.yaml+) file contains a string, but another locale does not,
+that indicates that no translation exists yet for that string in that locale.
+Usually, that means that the string is new or recently changed, and no
+translation was available at the time.  Translations will be added as we get
+them, but you can also submit pull requests to fill them in.
+
+If a non-English locale contains a string, but the English text does not, that
+usually indicates that the string is from an older version of cPanel & WHM and
+was translated, but is no longer used in the latest version.  Other than
+slightly increasing the size of the compiled locale databases, these strings are
+harmless, although they may be removed in future versions.
+
+Note that the +en.yaml+ file in the repository is a combination of the +en.yaml+
+and +queue/pending.yaml+ files distributed with cPanel & WHM.  The latter file
+is a historical artifact, and the two have been combined here for ease of use.
+
 Error Messages
 --------------
 
