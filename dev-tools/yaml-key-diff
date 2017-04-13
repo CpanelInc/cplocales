@@ -1,0 +1,107 @@
+#!/usr/local/cpanel/3rdparty/bin/perl
+
+# Copyright 2017, cPanel, Inc.
+# All rights reserved.
+# http://cpanel.net
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+# 1. Redistributions of source code must retain the above copyright notice,
+# this list of conditions and the following disclaimer.
+#
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+# this list of conditions and the following disclaimer in the documentation
+# and/or other materials provided with the distribution.
+#
+# 3. Neither the name of the owner nor the names of its contributors may be
+# used to endorse or promote products derived from this software without
+# specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+use strict;
+use warnings;
+
+use File::Slurp  ();
+use Getopt::Long ();
+use Text::Diff   ();
+use YAML         ();
+
+exit _main(@ARGV) unless caller;
+
+sub _main {
+    my @args = @_;
+
+    Getopt::Long::GetOptionsFromArray(
+        \@args,
+        'help|?' => \my $print_help,
+    );
+    return _print_help(0) if $print_help;
+    return _print_help(1) if @args != 2;
+
+    my ( $file_A, $file_B ) = @args;
+
+    my $yaml_A = File::Slurp::read_file( $file_A, binmode => ':raw' );
+    my $yaml_B = File::Slurp::read_file( $file_B, binmode => ':raw' );
+
+    my $data_A = eval { YAML::Load($yaml_A) };
+    if ( my $err = $@ ) {
+        _print_YAML_parse_error( $file_A, $err );
+        return 1;
+    }
+
+    my $data_B = eval { YAML::Load($yaml_B) };
+    if ( my $err = $@ ) {
+        _print_YAML_parse_error( $file_B, $err );
+        return 1;
+    }
+
+    my @keys_A = sort keys %$data_A;
+    my @keys_B = sort keys %$data_B;
+
+    my $text_A = join "\n", @keys_A, '';
+    my $text_B = join "\n", @keys_B, '';
+
+    my $diff = Text::Diff::diff(
+        \$text_A,
+        \$text_B,
+        {
+            FILENAME_A => $file_A,
+            MTIME_A    => ( stat($file_A) )[9],
+            FILENAME_B => $file_B,
+            MTIME_B    => ( stat($file_B) )[9],
+        },
+    );
+    print $diff;
+
+    return 0;
+}
+
+sub _print_YAML_parse_error {
+    my ( $file, $err ) = @_;
+
+    # Set the actual document name for debugging.
+    $err =~ s/\bDocument: \K\d+\b/$file/;
+    print STDERR $err;
+    return;
+}
+
+sub _print_help {
+    my ($ret) = @_;
+    print <<HELP;
+Usage: $0 <localeA.yaml> <localeB.yaml>
+
+Returns a unified diff of the keys in each locale file.
+HELP
+    return $ret;
+}
